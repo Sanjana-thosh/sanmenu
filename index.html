@@ -4,34 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup and Login Form</title>
-    <!-- add stylesheet here -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="main">
         <input type="checkbox" id="chk" >
 
+        <!-- Signup Form -->
         <div class="signup">
-            <form action="Menu.html">
+            <form id="signupForm">
                 <label for="chk">Sign up</label>
                 <input type="text" name="txt" placeholder="User name" required="">
-                <input type="email" name="email" id="" placeholder="email" required="">
-                <input type="password" name="pswd" placeholder="password" id="" required="">
-                <input type="password" name="pswd" placeholder="chk password" id="" required="">
-                <button>Sign up</button>
+                <input type="email" name="email" placeholder="email" required="">
+                <input type="password" name="pswd" placeholder="password" required="">
+                <input type="password" name="pswd2" placeholder="confirm password" required="">
+                <button type="submit">Sign up</button>
             </form>
         </div>
 
+        <!-- Login Form -->
         <div class="login">
-            <form action="Menu.html">
+            <form id="loginForm">
                 <label for="chk">Login</label>
-                <input type="email" name="email" id="" placeholder="Email Or User name" required="">
-                <input type="password" name="password" id="" placeholder="password" required="">
-                <button>Login</button>
+                <input type="email" name="email" placeholder="Email Or User name" required="">
+                <input type="password" name="password" placeholder="password" required="">
+                <button type="submit">Login</button>
                 <button type="reset">Reset</button>
-                <p>Don't have account <a href="#">Create account</a>.</p>
+                <p>Don't have an account? <a href="#">Create account</a>.</p>
             </form>
         </div>
     </div>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        // Handle signup form submission
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent form from submitting normally
+
+            // Add logic to check user inputs (optional)
+            const username = event.target.txt.value;
+            const email = event.target.email.value;
+            const password = event.target.pswd.value;
+            const confirmPassword = event.target.pswd2.value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // If everything is valid, redirect to menu.html
+            window.location.href = "menu.html";
+        });
+
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent form from submitting normally
+
+            // Get user inputs
+            const email = event.target.email.value;
+            const password = event.target.password.value;
+
+            // Dummy check for email and password (replace with actual logic if needed)
+            if (email === "test@example.com" && password === "password") {
+                // If credentials are correct, redirect to menu.html
+                window.location.href = "menu.html";
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        });
+    </script>
 </body>
-</html
+</html>
